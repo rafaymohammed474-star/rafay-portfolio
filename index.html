@@ -5,14 +5,12 @@
 <title>Rafay — Frame One</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=VT323&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: the site is one edit. Preloader = the 3s hook, hero = the reel on the viewer, work = a scrubbed timeline, footer = the final frame flashed in playhead yellow. */
 :root{
   --ink:#0a0b0d; --ink-2:#121418; --rule:#24272e; --paper:#f2f0ea; --dim:#80858f;
   --hot:#ffd23f; --hot-ink:#0a0b0d;
-  --vhs-r:rgba(255,45,85,.85); --vhs-c:rgba(34,227,255,.85);
-  --vcr:"VT323","Geist Mono",ui-monospace,Menlo,monospace;
   --display:"Archivo","Arial Narrow",Impact,sans-serif;
   --body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -32,29 +30,6 @@ button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--hot);outline-offset:4px}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
-
-/* grain */
-.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.2;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  animation:grain .5s steps(5) infinite}
-@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-6%,-2%)}80%{transform:translate(5%,4%)}100%{transform:translate(0,0)}}
-
-/* VHS layer: scanlines, tracking bar, on-screen display */
-.scan{position:fixed;inset:0;z-index:89;pointer-events:none;
-  background:repeating-linear-gradient(0deg,rgba(0,0,0,.36) 0 2px,transparent 2px 4px),radial-gradient(120% 90% at 50% 50%,transparent 50%,rgba(0,0,0,.55) 100%)}
-.hs{position:fixed;left:0;right:0;bottom:0;height:14px;z-index:88;pointer-events:none;opacity:.5;mix-blend-mode:screen;transform:skewX(-30deg) scaleX(1.1);background:repeating-linear-gradient(90deg,rgba(255,255,255,.75) 0 5px,transparent 5px 13px,rgba(255,255,255,.35) 13px 16px,transparent 16px 41px);background-size:300px 100%;animation:hs .35s steps(3) infinite}
-@keyframes hs{0%{background-position:0 0}33%{background-position:-97px 0}66%{background-position:61px 0}100%{background-position:-180px 0}}
-.trk{position:fixed;left:0;right:0;top:0;height:11vh;z-index:88;pointer-events:none;opacity:0;transform:translateY(-12vh);
-  background:linear-gradient(180deg,transparent,rgba(255,255,255,.2) 36%,rgba(255,255,255,.55) 40%,rgba(255,255,255,.06) 44%,rgba(255,255,255,.04) 64%,transparent);animation:trk 6s linear infinite}
-@keyframes trk{0%{transform:translateY(-12vh);opacity:1}13%{transform:translateY(112vh);opacity:1}13.1%,100%{transform:translateY(112vh);opacity:0}}
-.osd{position:fixed;right:var(--gut-r);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;gap:14px;align-items:baseline;font:400 30px/1 var(--vcr);letter-spacing:.06em;color:#fff;mix-blend-mode:difference;pointer-events:none;text-transform:uppercase}
-.osd span+span{font-size:20px;opacity:.8}
-@media (max-width:640px){.osd{font-size:17px}.osd span+span{display:none}}
-.vt{font:400 17px/1 var(--vcr);letter-spacing:.08em;text-transform:uppercase;color:var(--hot)}
-h1{text-shadow:calc(.022em + var(--ab,0px)) 0 var(--vhs-r),calc(-.022em - var(--ab,0px)) 0 var(--vhs-c)}
-main h2{text-shadow:calc(.02em + var(--ab,0px)) 0 var(--vhs-r),calc(-.02em - var(--ab,0px)) 0 var(--vhs-c)}
-h1 em{text-shadow:0 0 .1em rgba(255,210,63,.6),0 0 .24em rgba(255,210,63,.3);animation:neon 7s infinite}
-@keyframes neon{0%,18%,20%,22%,60%,61.5%,100%{opacity:1}19%,21%{opacity:.5}60.7%{opacity:.68}}
 
 /* preloader */
 .pre{position:fixed;inset:0;z-index:100;background:var(--ink);display:grid;place-items:center;animation:preFail .01s 5s forwards}
@@ -88,7 +63,7 @@ h1 em{text-shadow:0 0 .1em rgba(255,210,63,.6),0 0 .24em rgba(255,210,63,.3);ani
 /* hero */
 .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;display:grid;align-items:end}
 .hero-vid{position:absolute;inset:0;overflow:hidden}
-.hero-vid video{width:100%;height:100%;object-fit:cover;filter:saturate(1.25) contrast(1.1) brightness(.6) blur(.4px);transform:scale(1.08)}
+.hero-vid video{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05) brightness(.55);transform:scale(1.08)}
 .hero-vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,13,.55) 0%,rgba(10,11,13,0) 35%,rgba(10,11,13,.2) 60%,var(--ink) 100%)}
 .hud{position:absolute;left:0;right:0;top:calc(76px + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;gap:16px;z-index:2}
 .hud .lbl{color:rgba(242,240,234,.75)}
@@ -209,7 +184,7 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
   .ruler,.readout{display:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .grain,.rec i,.scroll-cue i,.trk,.hs,h1 em{animation:none}
+  .rec i,.scroll-cue i{animation:none}
   .pre{display:none}
   .state .w{opacity:1}
 }
@@ -227,17 +202,12 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
     <div class="pre-meta"><span class="lbl">Rafay / Showreel</span><span class="lbl">30 FPS</span></div>
     <div class="pre-tc" id="preTc">00:00:<b>00</b>:00</div>
     <div class="pre-bar"><i id="preBar"></i></div>
-    <div class="pre-meta"><span class="vt" id="preMsg">Spooling footage</span><span class="lbl">00:00:03:00</span></div>
+    <div class="pre-meta"><span class="lbl">The hook</span><span class="lbl">00:00:03:00</span></div>
   </div>
 </div>
 <div class="wipe" id="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 <div class="prog" id="prog" aria-hidden="true"></div>
 <div class="seq hide-m" id="seq" aria-hidden="true">SEQ 00:00:00:00</div>
-<div class="grain" aria-hidden="true"></div>
-<div class="scan" aria-hidden="true"></div>
-<div class="trk" aria-hidden="true"></div>
-<div class="hs" aria-hidden="true"></div>
-<div class="osd" id="osd" aria-hidden="true"><span id="osdMode">PLAY &#9654;</span><span id="osdDate">SP</span></div>
 <div class="cur" id="cur"></div>
 <div class="cur-ring" id="ring">PLAY</div>
 
@@ -342,7 +312,7 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
     <div class="final-foot">
       <span>&copy; 2026 Muhammad Rafay Hussain</span>
       <a href="https://expostudios.net/" target="_blank" rel="noopener">Expo Studios &nearr;</a>
-      <a href="#top" id="toTop">Be kind, rewind &uarr;</a>
+      <a href="#top" id="toTop">Back to frame one &uarr;</a>
     </div>
   </div>
 </footer>
@@ -383,7 +353,7 @@ clips.forEach((c,i)=>{
   const a=document.createElement("a");
   a.className="clip"+(c.v?" v":""); a.href="media/"+c.f+".mp4"; a.dataset.cursor="play"; a.dataset.i=i;
   a.setAttribute("aria-label","Play "+c.t);
-  a.innerHTML=`<div class="media"><span class="badge">Tape ${pad(i+1)}</span>
+  a.innerHTML=`<div class="media"><span class="badge">V1 &middot; ${pad(i+1)}</span>
     <video src="media/${c.f}.mp4" poster="media/${c.f}.jpg" muted loop playsinline preload="metadata"></video>
     <span class="dur">${tc(c.d)}</span></div>
     <div class="info"><h3>${c.t}</h3><span class="mono">${c.k}</span></div>`;
@@ -392,7 +362,7 @@ clips.forEach((c,i)=>{
 });
 const end=document.createElement("a");
 end.className="endcard"; end.href="https://www.behance.net/rrfyv"; end.target="_blank"; end.rel="noopener"; end.dataset.magnetic="";
-end.innerHTML=`<span class="vt">End of tape</span><strong>Full archive<br>on Behance</strong><span class="lbl" style="color:var(--hot)">behance.net/rrfyv &nearr;</span>`;
+end.innerHTML=`<span class="lbl">End of sequence</span><strong>Full archive<br>on Behance</strong><span class="lbl" style="color:var(--hot)">behance.net/rrfyv &nearr;</span>`;
 track.appendChild(end);
 
 /* ---------- lightbox ---------- */
@@ -415,7 +385,6 @@ $("copy").addEventListener("click",()=>{
   const el=$("email"), fb=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Selected. Press Ctrl+C")};
   try{navigator.clipboard.writeText(el.textContent).then(()=>toast("Email copied"),fb)}catch(e){fb()}
 });
-try{$("osdDate").textContent=new Intl.DateTimeFormat("en-US",{month:"short",day:"2-digit",year:"numeric"}).format(new Date()).replace(",","")+" SP"}catch(e){}
 const clock=()=>{try{$("lt").textContent="Karachi "+new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Karachi",hour:"2-digit",minute:"2-digit"}).format(new Date())+" PKT"}catch(e){}};
 clock(); setInterval(clock,30000);
 
@@ -473,7 +442,7 @@ if(!reduce&&document.body.contains(pre)){
   const o={s:0}, ptc=$("preTc");
   lenis&&lenis.stop(); document.documentElement.style.overflow="hidden";
   gsap.timeline()
-    .to(o,{s:3,duration:1.9,ease:"power2.inOut",onUpdate(){const f=Math.round(o.s*FPS);$("preMsg").textContent=["Spooling footage","Syncing audio","Setting in point","Rolling"][Math.min(3,Math.floor(o.s/3*4))];ptc.innerHTML=`00:00:<b>${pad(Math.floor(f/30))}</b>:${pad(f%30)}`}})
+    .to(o,{s:3,duration:1.9,ease:"power2.inOut",onUpdate(){const f=Math.round(o.s*FPS);ptc.innerHTML=`00:00:<b>${pad(Math.floor(f/30))}</b>:${pad(f%30)}`}})
     .to("#preBar",{scaleX:1,duration:1.9,ease:"power2.inOut"},0)
     .to("#wipe i",{scaleY:1,duration:.42,ease:"expo.in",stagger:.035},"+=.12")
     .add(()=>{pre.remove()})
@@ -532,11 +501,9 @@ if(fine){
 }
 
 /* ---------- global playhead, sequence timecode, nav hide ---------- */
-let navHidden=false, osdT=0; const seq=$("seq"), osdMode=$("osdMode");
+let navHidden=false; const seq=$("seq");
 ScrollTrigger.create({start:0,end:"max",onUpdate:s=>{
   gsap.set("#prog",{scaleX:s.progress}); seq.textContent="SEQ "+tc(s.progress*60);
-  const v=s.getVelocity(); osdMode.textContent=Math.abs(v)<350?"PLAY \u25B6":v>0?"FF \u25B6\u25B6":"\u25C0\u25C0 REW";
-  clearTimeout(osdT); osdT=setTimeout(()=>osdMode.textContent="PLAY \u25B6",220);
   const hide=s.direction>0&&s.scroll()>300;
   if(hide!==navHidden){navHidden=hide;gsap.to(".nav",{yPercent:hide?-130:0,duration:.45,ease:"power3.out",overwrite:true})}
 }});
@@ -551,14 +518,13 @@ gsap.utils.toArray("main h2").forEach(h=>{
 const marq=$("marq"); let mx=0, dir=-1, boost=0;
 const setW=()=>marq.firstElementChild.offsetWidth;
 let w=setW(); addEventListener("resize",()=>w=setW());
-let sk=0, skT=0, abPrev=0; const abEls=document.querySelectorAll("h1,main h2");
+let sk=0, skT=0;
 ScrollTrigger.create({start:0,end:"max",onUpdate:s=>{const v=s.getVelocity(); boost=Math.min(Math.abs(v)/120,28); dir=s.direction>0?-1:1; skT=gsap.utils.clamp(-7,7,v/-260)}});
 gsap.ticker.add((t,dt)=>{
   boost*=.92; skT*=.86; sk+=(skT-sk)*.12;
   mx+=dir*(1.1+boost)*(dt/16); if(mx<=-w)mx+=w; if(mx>0)mx-=w;
   marq.style.transform=`translate3d(${mx}px,0,0) skewX(${sk.toFixed(2)}deg)`;
   if(desktop) track.style.setProperty("--sk",(sk*.55).toFixed(2)+"deg");
-  const ab=Math.min(10,Math.abs(sk)*1.7); if(Math.abs(ab-abPrev)>.15){abPrev=ab;abEls.forEach(e=>e.style.setProperty("--ab",ab.toFixed(1)+"px"))}
 });
 
 /* ---------- statement word scrub ---------- */
@@ -600,7 +566,6 @@ gsap.utils.toArray(".step").forEach(s=>{
 
 /* ---------- spec + final ---------- */
 gsap.from(".spec-grid > div",{opacity:0,y:30,stagger:.1,duration:.8,ease:"power3.out",scrollTrigger:{trigger:".spec",start:"top 75%"}});
-ScrollTrigger.create({trigger:"#contact",start:"top 55%",onEnter:()=>gsap.to(".seq,.osd",{autoAlpha:0,duration:.3}),onLeaveBack:()=>gsap.to(".seq,.osd",{autoAlpha:1,duration:.3})});
 const bigC=[]; document.querySelectorAll("#big .bl").forEach(b=>bigC.push(...splitChars(b)));
 gsap.fromTo(bigC,{yPercent:112},{yPercent:0,ease:"none",stagger:.05,scrollTrigger:{trigger:"#contact",start:"top 90%",end:"bottom bottom",scrub:.4}});
 gsap.fromTo("#big",{scale:.72},{scale:1,ease:"none",scrollTrigger:{trigger:"#contact",start:"top bottom",end:"bottom bottom",scrub:true}});
