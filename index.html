@@ -223,7 +223,7 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
   <div class="nav-r">
     <a href="#work" data-magnetic>Work</a>
     <a href="#approach" data-magnetic>Approach</a>
-    <a class="nav-cta" href="#contact" data-magnetic>Hire me</a>
+    <a class="nav-cta" href="https://wa.me/923172867292?text=Hi%20Rafay%2C%20I%27d%20like%20to%20book%20a%20call%20about%20a%20video%20project." target="_blank" rel="noopener" data-magnetic>Book a call</a>
   </div>
 </header>
 
@@ -313,6 +313,7 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
     </div>
     <div class="contact-row">
       <span class="email" id="phone">+92 317 2867292</span>
+      <a class="btn solid" href="https://wa.me/923172867292?text=Hi%20Rafay%2C%20I%27d%20like%20to%20book%20a%20call%20about%20a%20video%20project." target="_blank" rel="noopener" data-magnetic>Book a call &nearr;</a>
       <a class="btn" href="https://wa.me/923172867292" target="_blank" rel="noopener" data-magnetic>WhatsApp &nearr;</a>
     </div>
     <div class="final-foot">
@@ -575,7 +576,7 @@ gsap.from(".spec-grid > div",{opacity:0,y:30,stagger:.1,duration:.8,ease:"power3
 const bigC=[]; document.querySelectorAll("#big .bl").forEach(b=>bigC.push(...splitChars(b)));
 gsap.fromTo(bigC,{yPercent:112},{yPercent:0,ease:"none",stagger:.05,scrollTrigger:{trigger:"#contact",start:"top 90%",end:"bottom bottom",scrub:.4}});
 gsap.fromTo("#big",{scale:.72},{scale:1,ease:"none",scrollTrigger:{trigger:"#contact",start:"top bottom",end:"bottom bottom",scrub:true}});
-gsap.from(".contact-row > *",{opacity:0,y:24,stagger:.08,duration:.7,ease:"power3.out",scrollTrigger:{trigger:".contact-row",start:"top 95%"}});
+gsap.from(".contact-row > *",{y:24,stagger:.08,duration:.7,ease:"power3.out",scrollTrigger:{trigger:".contact-row",start:"top 95%"}});
 addEventListener("load",()=>ScrollTrigger.refresh());
 })();
 </script>
