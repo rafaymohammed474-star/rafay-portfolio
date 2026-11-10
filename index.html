@@ -138,7 +138,7 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
 /* three.js */
 .fx-hero{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .8s ease}
 .fx-hero.on{opacity:1}
-.reel3d{position:relative;height:clamp(480px,92vh,920px);overflow:hidden;background:var(--ink);margin-top:clamp(70px,12vh,140px)}
+.reel3d{position:relative;height:clamp(480px,92vh,920px);overflow:hidden;background:var(--ink)}
 .reel3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .reel3d::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,var(--ink) 0%,transparent 18%,transparent 52%,rgba(10,11,13,.92) 86%,var(--ink) 100%)}
 .reel3d-txt{position:absolute;left:0;right:0;bottom:clamp(28px,6vh,64px);z-index:2;pointer-events:none;display:grid;gap:14px}
@@ -279,6 +279,14 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
     <p id="statement">I cut for the thumb that is about to scroll. Every cut, every caption and every frame of motion is there to keep it still until the last second.</p>
   </section>
 
+  <section class="reel3d" id="reel3d" aria-label="Every frame on purpose">
+    <canvas id="stripCv" aria-hidden="true"></canvas>
+    <div class="reel3d-txt gut">
+      <span class="lbl">The reel &middot; 30 fps</span>
+      <p class="r3-big"><span class="bl"><span>Thirty frames a second.</span></span><span class="bl"><span><em>Every one</em> on purpose.</span></span></p>
+    </div>
+  </section>
+
   <section class="work" id="work">
     <div class="work-pin gut" id="workPin">
       <div class="work-head">
@@ -300,14 +308,6 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
       <div class="step"><div class="fill"></div><span class="tcode">00:00:00:00<br>&rarr; 00:00:03:00</span><h3>Hook</h3><p>The first three seconds decide everything. Open on the strongest moment and give them a reason to stay.</p></div>
       <div class="step"><div class="fill"></div><span class="tcode">00:00:03:00<br>&rarr; OUT</span><h3>Hold</h3><p>Sharp cuts, intentional pacing, pattern breaks before attention drops. Same rule for a 9-second reel and a 20-minute video.</p></div>
       <div class="step"><div class="fill"></div><span class="tcode">EXPORT<br>H.264 &middot; MASTER</span><h3>Polish</h3><p>Clean type, subtle motion and smooth transitions that lift the story without burying it.</p></div>
-    </div>
-  </section>
-
-  <section class="reel3d" id="reel3d" aria-label="Every frame on purpose">
-    <canvas id="stripCv" aria-hidden="true"></canvas>
-    <div class="reel3d-txt gut">
-      <span class="lbl">The reel &middot; 30 fps</span>
-      <p class="r3-big"><span class="bl"><span>Thirty frames a second.</span></span><span class="bl"><span><em>Every one</em> on purpose.</span></span></p>
     </div>
   </section>
 
@@ -715,7 +715,7 @@ const strip={on:false};
         uniform sampler2D uTex;uniform float uOff,uRep;varying vec2 vUv;varying float vShade;
         void main(){
           vec2 uv=vec2(vUv.x*uRep+uOff,vUv.y);
-          if(!gl_FrontFacing) uv.x=-uv.x;
+          if(!gl_FrontFacing) uv.y=1.-uv.y;
           vec3 c=texture2D(uTex,uv).rgb*(.42+.58*abs(vShade))*(gl_FrontFacing?1.:.7);
           gl_FragColor=vec4(c,1.);
         }`});
