@@ -11,7 +11,7 @@
 :root{
   --ink:#0a0b0d; --ink-2:#121418; --rule:#24272e; --paper:#f2f0ea; --dim:#80858f;
   --hot:#ffd23f; --hot-ink:#0a0b0d;
-  --vhs-r:rgba(255,45,85,.62); --vhs-c:rgba(34,227,255,.62);
+  --vhs-r:rgba(255,45,85,.85); --vhs-c:rgba(34,227,255,.85);
   --vcr:"VT323","Geist Mono",ui-monospace,Menlo,monospace;
   --display:"Archivo","Arial Narrow",Impact,sans-serif;
   --body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -34,23 +34,25 @@ html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 
 /* grain */
-.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.09;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  animation:grain .9s steps(6) infinite}
+.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.2;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:grain .5s steps(5) infinite}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-6%,-2%)}80%{transform:translate(5%,4%)}100%{transform:translate(0,0)}}
 
 /* VHS layer: scanlines, tracking bar, on-screen display */
 .scan{position:fixed;inset:0;z-index:89;pointer-events:none;
-  background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px),radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.45) 100%)}
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.36) 0 2px,transparent 2px 4px),radial-gradient(120% 90% at 50% 50%,transparent 50%,rgba(0,0,0,.55) 100%)}
+.hs{position:fixed;left:0;right:0;bottom:0;height:14px;z-index:88;pointer-events:none;opacity:.5;mix-blend-mode:screen;transform:skewX(-30deg) scaleX(1.1);background:repeating-linear-gradient(90deg,rgba(255,255,255,.75) 0 5px,transparent 5px 13px,rgba(255,255,255,.35) 13px 16px,transparent 16px 41px);background-size:300px 100%;animation:hs .35s steps(3) infinite}
+@keyframes hs{0%{background-position:0 0}33%{background-position:-97px 0}66%{background-position:61px 0}100%{background-position:-180px 0}}
 .trk{position:fixed;left:0;right:0;top:0;height:11vh;z-index:88;pointer-events:none;opacity:0;transform:translateY(-12vh);
-  background:linear-gradient(180deg,transparent,rgba(255,255,255,.10) 38%,rgba(255,255,255,.03) 62%,transparent);animation:trk 9s linear infinite}
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.2) 36%,rgba(255,255,255,.55) 40%,rgba(255,255,255,.06) 44%,rgba(255,255,255,.04) 64%,transparent);animation:trk 6s linear infinite}
 @keyframes trk{0%{transform:translateY(-12vh);opacity:1}13%{transform:translateY(112vh);opacity:1}13.1%,100%{transform:translateY(112vh);opacity:0}}
-.osd{position:fixed;right:var(--gut-r);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;gap:14px;align-items:baseline;font:400 22px/1 var(--vcr);letter-spacing:.06em;color:#fff;mix-blend-mode:difference;pointer-events:none;text-transform:uppercase}
-.osd span+span{font-size:16px;opacity:.75}
+.osd{position:fixed;right:var(--gut-r);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;gap:14px;align-items:baseline;font:400 30px/1 var(--vcr);letter-spacing:.06em;color:#fff;mix-blend-mode:difference;pointer-events:none;text-transform:uppercase}
+.osd span+span{font-size:20px;opacity:.8}
 @media (max-width:640px){.osd{font-size:17px}.osd span+span{display:none}}
 .vt{font:400 17px/1 var(--vcr);letter-spacing:.08em;text-transform:uppercase;color:var(--hot)}
-h1{text-shadow:calc(1.5px + var(--ab,0px)) 0 var(--vhs-r),calc(-1.5px - var(--ab,0px)) 0 var(--vhs-c)}
-main h2{text-shadow:calc(1px + var(--ab,0px)) 0 var(--vhs-r),calc(-1px - var(--ab,0px)) 0 var(--vhs-c)}
+h1{text-shadow:calc(.022em + var(--ab,0px)) 0 var(--vhs-r),calc(-.022em - var(--ab,0px)) 0 var(--vhs-c)}
+main h2{text-shadow:calc(.02em + var(--ab,0px)) 0 var(--vhs-r),calc(-.02em - var(--ab,0px)) 0 var(--vhs-c)}
 h1 em{text-shadow:0 0 .1em rgba(255,210,63,.6),0 0 .24em rgba(255,210,63,.3);animation:neon 7s infinite}
 @keyframes neon{0%,18%,20%,22%,60%,61.5%,100%{opacity:1}19%,21%{opacity:.5}60.7%{opacity:.68}}
 
@@ -86,7 +88,7 @@ h1 em{text-shadow:0 0 .1em rgba(255,210,63,.6),0 0 .24em rgba(255,210,63,.3);ani
 /* hero */
 .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;display:grid;align-items:end}
 .hero-vid{position:absolute;inset:0;overflow:hidden}
-.hero-vid video{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05) brightness(.55);transform:scale(1.08)}
+.hero-vid video{width:100%;height:100%;object-fit:cover;filter:saturate(1.25) contrast(1.1) brightness(.6) blur(.4px);transform:scale(1.08)}
 .hero-vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,13,.55) 0%,rgba(10,11,13,0) 35%,rgba(10,11,13,.2) 60%,var(--ink) 100%)}
 .hud{position:absolute;left:0;right:0;top:calc(76px + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;gap:16px;z-index:2}
 .hud .lbl{color:rgba(242,240,234,.75)}
@@ -207,7 +209,7 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
   .ruler,.readout{display:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .grain,.rec i,.scroll-cue i,.trk,h1 em{animation:none}
+  .grain,.rec i,.scroll-cue i,.trk,.hs,h1 em{animation:none}
   .pre{display:none}
   .state .w{opacity:1}
 }
@@ -234,6 +236,7 @@ h2{margin:6px 0 0;font:900 clamp(40px,7vw,110px)/.86 var(--display);font-stretch
 <div class="grain" aria-hidden="true"></div>
 <div class="scan" aria-hidden="true"></div>
 <div class="trk" aria-hidden="true"></div>
+<div class="hs" aria-hidden="true"></div>
 <div class="osd" id="osd" aria-hidden="true"><span id="osdMode">PLAY &#9654;</span><span id="osdDate">SP</span></div>
 <div class="cur" id="cur"></div>
 <div class="cur-ring" id="ring">PLAY</div>
